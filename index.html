@@ -1,0 +1,1479 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>MDR CRÉATION — V9.16</title>
+<style>
+:root {
+  --bg:#050505; --panel:#0b0b0b; --panel2:#111; --line:#232323;
+  --gold:#d8a84a; --text:#f7f7f7; --muted:#929292;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{display:block;max-width:100%}
+.container{width:min(1180px,calc(100% - 36px));margin:auto}
+.gold{color:var(--gold)}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:800}
+h1,h2,h3{margin:0;letter-spacing:-.035em}
+p{color:#b9b9b9;line-height:1.75}
+header{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.08em}
+.brand img{width:39px;height:39px;object-fit:cover;border-radius:50%;border:1px solid rgba(216,168,74,.5)}
+nav{display:flex;align-items:center;gap:28px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#bdbdbd}
+nav a:hover{color:var(--gold)}
+.status{font-size:10px;letter-spacing:.14em;border:1px solid rgba(216,168,74,.5);color:var(--gold);padding:8px 11px;border-radius:999px;white-space:nowrap}
+.hero{padding:72px 0 48px;position:relative}
+.hero:before{content:"";position:absolute;width:440px;height:440px;background:rgba(216,168,74,.08);filter:blur(110px);border-radius:50%;left:50%;top:90px;transform:translateX(-50%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1.08fr;align-items:center;gap:54px}
+.hero h1{font-size:clamp(50px,7.2vw,96px);line-height:.91;font-weight:950}
+.hero-copy{font-size:18px;max-width:590px;margin:26px 0 0}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{border:1px solid var(--line);background:#101010;color:white;padding:14px 18px;border-radius:12px;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.btn.primary{background:var(--gold);color:#080808;border-color:var(--gold)}
+.btn:hover{transform:translateY(-1px)}
+.hero-product{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hoodie-card{border:1px solid var(--line);background:#0a0a0a;border-radius:24px;overflow:hidden;min-height:520px;display:flex;align-items:center;justify-content:center;position:relative}
+.hoodie-card img{width:100%;height:100%;object-fit:contain}
+.hoodie-label{position:absolute;left:14px;bottom:14px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);padding:9px 11px;border:1px solid #2c2c2c;border-radius:10px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.section{padding:88px 0;border-top:1px solid #171717}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+.section h2{font-size:clamp(38px,5vw,66px);line-height:.95}
+.section-intro{max-width:520px;margin:0;font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{border:1px solid var(--line);background:linear-gradient(180deg,#101010,#090909);border-radius:18px;padding:24px;min-height:220px;position:relative;overflow:hidden}
+.step .num{font-size:70px;font-weight:950;color:rgba(216,168,74,.17);position:absolute;right:15px;top:2px}
+.step h3{font-size:24px;margin-top:44px}
+.step p{font-size:14px;margin-bottom:0}
+.demo{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:center}
+.demo-visual{border:1px solid var(--line);border-radius:24px;background:#0a0a0a;padding:18px;min-height:520px;display:flex;align-items:center;justify-content:center}
+.demo-visual img{max-height:500px;object-fit:contain}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.spec{border:1px solid var(--line);background:#0d0d0d;padding:16px;border-radius:13px}
+.spec small{display:block;color:var(--gold);font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:5px}
+.spec strong{font-size:15px}
+.fixation{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.fix{border:1px solid var(--line);background:#0c0c0c;border-radius:14px;padding:17px}
+.fix b{display:block;color:var(--gold);font-size:13px;margin-bottom:7px}
+.fix span{color:#a0a0a0;font-size:12px;line-height:1.55}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.art-card{border:1px solid var(--line);background:#0a0a0a;border-radius:18px;overflow:hidden;color:white;padding:0;text-align:left;cursor:pointer;transition:.2s}
+.art-card:hover{border-color:rgba(216,168,74,.75);transform:translateY(-2px)}
+.art-wrap{aspect-ratio:7/9;background:#050505;display:flex;align-items:center;justify-content:center;padding:8px}
+.art-wrap img{width:100%;height:100%;object-fit:contain}
+.art-meta{display:flex;justify-content:space-between;align-items:center;padding:14px 15px;border-top:1px solid var(--line)}
+.art-meta small{display:block;color:var(--gold);font-size:9px;letter-spacing:.18em;margin-bottom:4px}
+.art-meta strong{font-size:14px;letter-spacing:.04em}
+.art-meta span{font-size:9px;letter-spacing:.12em;color:#777;border:1px solid #272727;padding:5px 7px;border-radius:7px}
+.tryon{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.try-label{position:absolute;left:18px;bottom:18px;font-size:10px;letter-spacing:.16em;color:#aaa;text-transform:uppercase}
+.qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qr-card{border:1px solid var(--line);background:#0c0c0c;border-radius:20px;padding:25px}
+.qr-card h3{font-size:25px}
+.qr-card ul{padding-left:18px;color:#aaa;line-height:1.9}
+.pro-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pro{border:1px solid var(--line);border-radius:20px;padding:28px;background:#0b0b0b}
+.pro h3{font-size:28px}
+.footer{padding:34px 0;border-top:1px solid #171717;color:#656565;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+/* lightbox — plein écran réel */
+.lightbox{
+  position:fixed;inset:0;
+  background:#000;
+  z-index:1000;
+  display:none;
+  padding:0;
+}
+.lightbox.open{display:block}
+.lb-inner{
+  width:100vw;
+  height:100dvh;
+  max-width:none;
+  display:block;
+}
+.lb-image{
+  width:100vw;
+  height:100dvh;
+  background:#000;
+  border:0;
+  border-radius:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+}
+.lb-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#000;
+}
+.lb-side{display:none!important}
+.lb-close{
+  position:fixed;
+  right:max(16px,env(safe-area-inset-right));
+  top:max(16px,env(safe-area-inset-top));
+  width:48px;height:48px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(8,8,8,.72);
+  backdrop-filter:blur(10px);
+  color:white;
+  font-size:28px;
+  line-height:1;
+  z-index:1002;
+  cursor:pointer;
+}
+.lb-nav{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;height:62px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.48);
+  backdrop-filter:blur(8px);
+  color:white;
+  border-radius:14px;
+  font-size:30px;
+  z-index:1001;
+  cursor:pointer;
+}
+.lb-prev{left:max(10px,env(safe-area-inset-left))}
+.lb-next{right:max(10px,env(safe-area-inset-right))}
+.lb-caption{
+  position:fixed;
+  left:50%;
+  bottom:max(14px,env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  z-index:1002;
+  background:rgba(0,0,0,.58);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(10px);
+  border-radius:999px;
+  padding:9px 14px;
+  color:#fff;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+/* mobile */
+@media(max-width:900px){
+  header{display:none}
+  nav{display:none} .status{display:none}
+  .hero{padding-top:28px}
+  .hero-grid,.demo,.tryon{grid-template-columns:1fr}
+  .hero-product{order:initial}
+  .hoodie-card{min-height:390px}
+  .steps{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .fixation{grid-template-columns:1fr 1fr}
+  .section-head{align-items:start;flex-direction:column}
+  .lb-inner{grid-template-columns:1fr;height:94vh}
+  .lb-side{display:none}
+  .qr-grid,.pro-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .container{width:min(100% - 24px,1180px)}
+  .brand span{display:none}
+  .hero h1{font-size:52px}
+  .hero-product{gap:8px}
+  .hoodie-card{min-height:300px;border-radius:16px}
+  .section{padding:66px 0}
+  .gallery{gap:8px}
+  .art-card{border-radius:12px}
+  .art-meta{padding:10px}
+  .art-meta strong{font-size:11px}
+  .art-meta span{display:none}
+  .fixation{grid-template-columns:1fr}
+  .virtual-hoodie{min-height:500px;padding:10px}
+}
+
+.hero-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:32px}
+.hero-logo{width:92px;height:92px;object-fit:cover;border-radius:50%;border:1px solid rgba(216,168,74,.55);box-shadow:0 0 36px rgba(216,168,74,.12)}
+.hero-signature{margin-top:12px;font-size:10px;letter-spacing:.28em;color:#8d8d8d;text-transform:uppercase}
+.hero-main-copy{text-align:center;max-width:920px;margin:0 auto 42px}
+.hero-main-copy .hero-copy{margin-left:auto;margin-right:auto}
+.hero-main-copy .cta-row{justify-content:center}
+.hero-product-clean{max-width:980px;margin:0 auto}
+
+
+.real-hoodie-viewer{border:1px solid var(--line);border-radius:26px;background:#090909;padding:18px}
+.real-hoodie-stage{position:relative;max-width:560px;margin:auto}
+.real-hoodie-base{width:100%;height:auto;display:block}
+.real-panel-overlay{position:absolute;left:30.8%;top:23.0%;width:38.4%;height:54.5%;overflow:hidden;background:#000;box-shadow:0 0 0 2px rgba(216,168,74,.75)}
+.real-panel-overlay img{width:100%;height:100%;object-fit:contain;background:#000}
+.real-hoodie-viewer .try-label{position:static;margin-top:14px;text-align:center;color:#aaa;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+
+
+@media(max-width:560px){
+  .hero-logo-wrap{margin-bottom:22px}
+  .hero-logo{width:84px;height:84px}
+  .hero-main-copy{margin-bottom:28px}
+  .hero-main-copy .eyebrow{font-size:10px}
+  .hero h1{font-size:48px;line-height:.93}
+  .hero-copy{font-size:15px;margin-top:18px}
+  .hero-product-clean{margin-top:6px}
+  .hoodie-label{font-size:9px;left:9px;bottom:9px;padding:7px 9px}
+}
+
+
+.worn-grid{
+  display:grid;
+  grid-template-columns:1.18fr .91fr .91fr;
+  gap:14px;
+  align-items:stretch;
+}
+.worn-card{
+  margin:0;
+  border:1px solid var(--line);
+  background:#0a0a0a;
+  border-radius:20px;
+  overflow:hidden;
+}
+.worn-open{
+  display:block;
+  width:100%;
+  padding:0;
+  border:0;
+  background:#050505;
+  cursor:pointer;
+}
+.worn-open img{
+  width:100%;
+  height:650px;
+  object-fit:cover;
+  object-position:center top;
+  transition:transform .28s ease;
+}
+.worn-card:hover .worn-open img{transform:scale(1.012)}
+.worn-card figcaption{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  column-gap:12px;
+  row-gap:3px;
+  align-items:center;
+  padding:16px 18px;
+  border-top:1px solid var(--line);
+}
+.worn-card figcaption span{
+  grid-row:1/3;
+  color:var(--gold);
+  font-weight:900;
+  font-size:18px;
+}
+.worn-card figcaption strong{
+  font-size:13px;
+  letter-spacing:.16em;
+}
+.worn-card figcaption small{
+  color:#777;
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+@media(max-width:900px){
+  .worn-grid{grid-template-columns:1fr 1fr}
+  .worn-main{grid-column:1/-1}
+  .worn-main .worn-open img{height:auto;max-height:none;object-fit:contain}
+  .worn-card:not(.worn-main) .worn-open img{height:520px}
+}
+@media(max-width:560px){
+  .worn-grid{grid-template-columns:1fr;gap:10px}
+  .worn-main{grid-column:auto}
+  .worn-open img,
+  .worn-card:not(.worn-main) .worn-open img{
+    height:auto;
+    max-height:none;
+    object-fit:contain;
+  }
+}
+
+
+.worn-open{color:inherit;text-decoration:none}
+.worn-target{
+  position:fixed;
+  inset:0;
+  z-index:1500;
+  background:#000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.worn-target:target{display:flex}
+.worn-target img{
+  position:relative;
+  z-index:2;
+  width:100vw;
+  height:100dvh;
+  object-fit:contain;
+  background:#000;
+}
+.worn-target-bg{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:#000;
+}
+.worn-target-close{
+  position:fixed;
+  top:max(16px,env(safe-area-inset-top));
+  right:max(16px,env(safe-area-inset-right));
+  z-index:3;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(8,8,8,.82);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  line-height:1;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+}
+
+
+.bb-followup{margin-top:15px}
+.bb-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.bb-card{
+  margin:0;
+  border:1px solid var(--line);
+  background:#0a0a0a;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.2s;
+}
+.bb-card:hover{border-color:rgba(216,168,74,.75);transform:translateY(-2px)}
+.bb-open{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  aspect-ratio:7/9;
+  padding:0;
+  background:#050505;
+  cursor:pointer;
+}
+.bb-open img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .25s ease;
+}
+.bb-card:hover .bb-open img{transform:scale(1.012)}
+.bb-target{
+  position:fixed;
+  inset:0;
+  z-index:1600;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+}
+.bb-target:target{display:flex}
+.bb-target img{
+  width:100vw;
+  height:100dvh;
+  object-fit:contain;
+  background:#000;
+  position:relative;
+  z-index:2;
+}
+.bb-target-bg{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:#000;
+}
+.bb-target-close{
+  position:fixed;
+  top:max(16px,env(safe-area-inset-top));
+  right:max(16px,env(safe-area-inset-right));
+  z-index:3;
+  width:50px;
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(8,8,8,.82);
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+}
+@media(max-width:900px){
+  .bb-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .bb-grid{gap:8px}
+  .bb-card{border-radius:12px}
+}
+
+
+/* V9.7 — plein écran iPhone robuste, sans dépendre de JavaScript */
+.art-card{display:block;text-decoration:none}
+.art-target,
+.worn-target,
+.bb-target{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100vh;
+  height:100dvh;
+  margin:0;
+  padding:0;
+  background:#000;
+  overflow:hidden;
+}
+.art-target:target,
+.worn-target:target,
+.bb-target:target{display:flex}
+
+.art-target > img,
+.worn-target > img,
+.bb-target > img{
+  position:relative;
+  z-index:2;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+  background:#000;
+}
+
+.fs-bg,
+.worn-target-bg,
+.bb-target-bg{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:#000;
+}
+
+.fs-close,
+.worn-target-close,
+.bb-target-close{
+  position:absolute;
+  top:max(14px,env(safe-area-inset-top));
+  right:max(14px,env(safe-area-inset-right));
+  z-index:5;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.38);
+  background:rgba(5,5,5,.78);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  line-height:1;
+  text-decoration:none;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+
+.fs-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  width:46px;
+  height:60px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:14px;
+  background:rgba(0,0,0,.48);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  line-height:1;
+  text-decoration:none;
+}
+.fs-prev{left:max(8px,env(safe-area-inset-left))}
+.fs-next{right:max(8px,env(safe-area-inset-right))}
+
+@media(max-width:560px){
+  .fs-nav{width:42px;height:54px;font-size:28px}
+}
+
+
+/* =========================================================
+   MDR CRÉATION — V9.10.1 CLEAN
+   Rose fluo inspiré du visuel skull + correction cartes FACE/DOS
+   Contenu et images conservés
+   ========================================================= */
+:root{
+  --mdr-neon:#FF0A8A;
+  --mdr-neon-soft:#FF4BA6;
+  --mdr-neon-deep:#C90065;
+  --mdr-cream:#F5EBDD;
+  --mdr-paper:#FFF9F1;
+  --mdr-warm:#F0E1CF;
+  --mdr-black:#0A0A0A;
+  --mdr-charcoal:#171717;
+  --mdr-ink:#1A1716;
+  --mdr-muted:#655E58;
+  --mdr-gold:#C99A3B;
+}
+
+/* Fond chaud, pas blanc clinique */
+html,body,main{
+  background:var(--mdr-cream) !important;
+  color:var(--mdr-ink) !important;
+}
+section{
+  background:var(--mdr-paper) !important;
+  color:var(--mdr-ink) !important;
+  border-color:rgba(201,0,101,.10) !important;
+}
+section:nth-of-type(even){
+  background:var(--mdr-warm) !important;
+}
+
+/* Hero : noir premium + énergie rose fluo */
+main > section:first-of-type,.hero{
+  background:
+    radial-gradient(circle at 18% 30%,rgba(255,10,138,.16),transparent 28%),
+    radial-gradient(circle at 82% 58%,rgba(255,10,138,.10),transparent 24%),
+    linear-gradient(145deg,#080808,#1A1719) !important;
+  color:#fff !important;
+}
+.hero:before{
+  background:rgba(255,10,138,.13) !important;
+}
+.hero .gold,
+.hero h1 .gold{
+  color:var(--mdr-neon) !important;
+  text-shadow:0 0 24px rgba(255,10,138,.20);
+}
+.hero .eyebrow,
+.hero-signature{
+  color:#F2C9DF !important;
+}
+
+/* Boutons : rose fluo maîtrisé */
+.btn.primary,
+.primary,
+.cta-primary,
+button.primary,
+a.primary{
+  background:linear-gradient(135deg,var(--mdr-neon),#E40078) !important;
+  color:#fff !important;
+  border-color:var(--mdr-neon) !important;
+  box-shadow:0 8px 24px rgba(255,10,138,.20) !important;
+}
+.btn:not(.primary){
+  border-color:rgba(255,10,138,.65) !important;
+}
+.hero .btn:not(.primary){
+  color:#fff !important;
+}
+
+/* Titres et accents */
+.eyebrow,.kicker,[class*="eyebrow"],[class*="kicker"]{
+  color:var(--mdr-neon-deep) !important;
+}
+.section h2 .gold,
+h2 .gold,h3 .gold{
+  color:var(--mdr-neon) !important;
+}
+.step-number,.number,[class*="step-num"]{
+  color:var(--mdr-neon) !important;
+}
+
+/* Cartes générales */
+.card,.worn-card,.art-card,.bb-card{
+  background:var(--mdr-paper) !important;
+  border-color:rgba(255,10,138,.20) !important;
+  box-shadow:0 10px 28px rgba(77,31,53,.08) !important;
+}
+
+/* Cartes techniques : noir + texte vraiment lisible + liseré rose */
+.step,.feature,.tech-card,.info-card,
+[class*="tech-card"],[class*="info-card"]{
+  background:linear-gradient(145deg,#111,#1D191B) !important;
+  border:1px solid rgba(255,10,138,.52) !important;
+  color:#FFF8F2 !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.10) !important;
+}
+.step h1,.step h2,.step h3,.step h4,.step p,.step strong,.step span,
+.feature h1,.feature h2,.feature h3,.feature h4,.feature p,.feature strong,.feature span,
+.tech-card h1,.tech-card h2,.tech-card h3,.tech-card h4,.tech-card p,.tech-card strong,.tech-card span,
+.info-card h1,.info-card h2,.info-card h3,.info-card h4,.info-card p,.info-card strong,.info-card span,
+[class*="tech-card"] h1,[class*="tech-card"] h2,[class*="tech-card"] h3,[class*="tech-card"] p,[class*="tech-card"] strong,
+[class*="info-card"] h1,[class*="info-card"] h2,[class*="info-card"] h3,[class*="info-card"] p,[class*="info-card"] strong{
+  color:#FFF8F2 !important;
+}
+.step p,.feature p,.tech-card p,.info-card p,
+[class*="tech-card"] p,[class*="info-card"] p{
+  color:#DDD4CF !important;
+}
+
+/* === CORRECTION PRÉCISE DES 2 CARTES FACE / DOS ===
+   même largeur, même hauteur, même arrondi, même ligne de base */
+.hero-product.hero-product-clean{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:14px !important;
+  align-items:stretch !important;
+}
+.hero-product.hero-product-clean .hoodie-card{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:0.67 / 1 !important;
+  border-radius:24px !important;
+  border:1px solid rgba(255,10,138,.50) !important;
+  background:#080808 !important;
+  overflow:hidden !important;
+  position:relative !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.03) inset,
+    0 8px 24px rgba(255,10,138,.12) !important;
+}
+.hero-product.hero-product-clean .hoodie-card img{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:#080808 !important;
+}
+/* Les sources originales FACE et DOS n'ont pas le même ratio.
+   Normalisation visuelle pour que les deux sweats paraissent de même hauteur. */
+.hero-product.hero-product-clean .hoodie-card:nth-child(1) img{
+  transform:scale(1.17) !important;
+}
+.hero-product.hero-product-clean .hoodie-card:nth-child(2) img{
+  transform:scale(1.02) !important;
+}
+.hero-product.hero-product-clean .hoodie-label{
+  left:12px !important;
+  right:12px !important;
+  bottom:12px !important;
+  min-height:44px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  background:rgba(15,12,14,.88) !important;
+  border:1px solid rgba(255,10,138,.65) !important;
+  color:#fff !important;
+  border-radius:12px !important;
+  letter-spacing:.12em !important;
+}
+.hero-product.hero-product-clean .hoodie-label::first-letter{
+  color:var(--mdr-neon);
+}
+
+/* Labels / petites touches */
+.hoodie-label,
+.badge,
+.tag{
+  border-color:rgba(255,10,138,.45) !important;
+}
+
+/* Fullscreen reste neutre pour ne pas teinter les œuvres */
+.art-target,.worn-target,.bb-target,
+.fs-bg,.worn-target-bg,.bb-target-bg,
+.art-target>img,.worn-target>img,.bb-target>img{
+  background:#000 !important;
+}
+
+/* Mobile */
+@media(max-width:560px){
+  .hero-product.hero-product-clean{
+    gap:12px !important;
+  }
+  .hero-product.hero-product-clean .hoodie-card{
+    aspect-ratio:0.64 / 1 !important;
+    border-radius:20px !important;
+  }
+  .hero-product.hero-product-clean .hoodie-label{
+    left:8px !important;
+    right:8px !important;
+    bottom:8px !important;
+    min-height:40px !important;
+    padding:8px 7px !important;
+    font-size:9px !important;
+  }
+}
+
+/* V9.11 — galerie horizontale tactile */
+.art-horizontal{display:flex!important;grid-template-columns:none!important;gap:14px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:6px 18px 18px 2px!important;scrollbar-width:none}
+.art-horizontal::-webkit-scrollbar{display:none}
+.art-horizontal .art-card{flex:0 0 clamp(170px,43vw,240px)!important;width:auto!important;scroll-snap-align:start}
+.art-horizontal .art-wrap{aspect-ratio:7/9!important;height:auto!important}
+.art-horizontal .art-wrap img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
+.collection-row-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:30px 0 12px}
+.collection-row-head h3{margin:3px 0 0;font-size:clamp(20px,5vw,28px)}.collection-kicker{color:#c90065;font-size:10px;font-weight:800;letter-spacing:.18em}
+.swipe-hint{color:#c90065;font-size:9px;font-weight:800;letter-spacing:.10em;white-space:nowrap}.new-art-card{border:1px solid rgba(255,10,138,.24)!important}
+@media(max-width:560px){.art-horizontal .art-card{flex-basis:44vw!important}.collection-row-head{align-items:flex-start;flex-direction:column;gap:7px}.swipe-hint{font-size:8px}}
+
+/* MDR CRÉATION — V9.12 — rose fluo + jaune fluorescent */
+:root{
+  --mdr-pink:#FF0A8A;
+  --mdr-pink-deep:#D90073;
+  --mdr-yellow:#F4FF19;
+  --mdr-yellow-soft:#F8FF5A;
+  --mdr-ink:#111111;
+}
+html,body,main{background:var(--mdr-yellow)!important;color:var(--mdr-ink)!important}
+section{background:var(--mdr-yellow)!important;color:var(--mdr-ink)!important;border-color:rgba(0,0,0,.14)!important}
+section:nth-of-type(even){background:linear-gradient(180deg,var(--mdr-yellow-soft),var(--mdr-yellow))!important}
+main>section:first-of-type,.hero{
+  background:
+    radial-gradient(circle at 18% 28%,rgba(255,10,138,.18),transparent 30%),
+    radial-gradient(circle at 82% 62%,rgba(244,255,25,.08),transparent 28%),
+    linear-gradient(145deg,#080808,#1A1719)!important;
+  color:#fff!important
+}
+section:not(:first-of-type) h1,
+section:not(:first-of-type) h2,
+section:not(:first-of-type) h3,
+section:not(:first-of-type) h4,
+section:not(:first-of-type) p,
+section:not(:first-of-type) span,
+section:not(:first-of-type) strong,
+section:not(:first-of-type) li{color:var(--mdr-ink)!important}
+.eyebrow,.kicker,[class*="eyebrow"],[class*="kicker"],.collection-kicker,.swipe-hint,.art-cat,.step-number,.number,[class*="step-num"]{color:var(--mdr-pink-deep)!important}
+.btn.primary,.primary,.cta-primary,button.primary,a.primary{
+  background:var(--mdr-pink)!important;
+  color:#fff!important;
+  border-color:var(--mdr-pink)!important;
+  box-shadow:0 8px 24px rgba(255,10,138,.22)!important
+}
+.btn:not(.primary),a[class*="btn"]:not(.primary){border-color:var(--mdr-pink)!important}
+.card,.worn-card,.art-card,.bb-card{
+  background:var(--mdr-yellow-soft)!important;
+  color:var(--mdr-ink)!important;
+  border-color:rgba(217,0,115,.30)!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.10)!important
+}
+.art-info,.art-meta{background:var(--mdr-yellow-soft)!important;color:var(--mdr-ink)!important}
+.art-name,.art-meta strong{color:var(--mdr-ink)!important}
+.art-cat,.art-meta small{color:var(--mdr-pink-deep)!important}
+.step,.feature,.tech-card,.info-card,[class*="tech-card"],[class*="info-card"]{
+  background:linear-gradient(145deg,#101010,#1C171A)!important;
+  border:1px solid rgba(255,10,138,.55)!important;
+  color:#fff!important
+}
+.step h1,.step h2,.step h3,.step h4,.step p,.step strong,.step span,
+.feature h1,.feature h2,.feature h3,.feature h4,.feature p,.feature strong,.feature span,
+.tech-card h1,.tech-card h2,.tech-card h3,.tech-card h4,.tech-card p,.tech-card strong,.tech-card span,
+.info-card h1,.info-card h2,.info-card h3,.info-card h4,.info-card p,.info-card strong,.info-card span{
+  color:#fff!important
+}
+.step p,.feature p,.tech-card p,.info-card p{color:#E9E2E6!important}
+.hoodie-label{background:rgba(10,10,10,.90)!important;color:#fff!important;border-color:var(--mdr-pink)!important}
+.hero-product.hero-product-clean .hoodie-card,.new-art-card{
+  border-color:rgba(255,10,138,.72)!important;
+  box-shadow:0 0 0 1px rgba(244,255,25,.12),0 10px 26px rgba(255,10,138,.14)!important
+}
+footer{background:#0A0A0A!important;color:#fff!important;border-color:rgba(255,10,138,.35)!important}
+footer p,footer span,footer a{color:#fff!important}
+.art-target,.worn-target,.bb-target,.fs-bg,.worn-target-bg,.bb-target-bg,.art-target>img,.worn-target>img,.bb-target>img{background:#000!important}
+
+
+/* =========================================================
+   MDR CRÉATION — V9.13
+   Correction globale : tous les textes sur fonds sombres en blanc
+   ========================================================= */
+
+/* Toutes les cartes/boîtes sombres */
+.step,.feature,.tech-card,.info-card,
+[class*="tech-card"],[class*="info-card"],
+[class*="dark-card"],[class*="black-card"],
+.qr-card,.nfc-card,.promise-card,
+.hero-product .hoodie-label{
+  color:#fff !important;
+}
+
+/* Forcer TOUS les descendants textuels à être visibles */
+.step *,
+.feature *,
+.tech-card *,
+.info-card *,
+[class*="tech-card"] *,
+[class*="info-card"] *,
+[class*="dark-card"] *,
+[class*="black-card"] *,
+.qr-card *,
+.nfc-card *,
+.promise-card *{
+  color:#fff !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+
+/* Exceptions d'accent : conserver le rose fluo quand il est volontaire */
+.step .eyebrow,
+.feature .eyebrow,
+.tech-card .eyebrow,
+.info-card .eyebrow,
+[class*="tech-card"] .eyebrow,
+[class*="info-card"] .eyebrow,
+.step-number,.number,[class*="step-num"]{
+  color:#FF0A8A !important;
+}
+
+/* Numéros géants décoratifs : visibles mais discrets */
+.step .big-number,
+.step [class*="big-number"],
+.feature .big-number,
+.feature [class*="big-number"]{
+  color:rgba(255,255,255,.18) !important;
+}
+
+/* QR / NFC : texte blanc dans les blocs noirs */
+.qr-card h1,.qr-card h2,.qr-card h3,.qr-card h4,.qr-card p,.qr-card li,.qr-card strong,.qr-card span,
+.nfc-card h1,.nfc-card h2,.nfc-card h3,.nfc-card h4,.nfc-card p,.nfc-card li,.nfc-card strong,.nfc-card span,
+.promise-card h1,.promise-card h2,.promise-card h3,.promise-card h4,.promise-card p,.promise-card li,.promise-card strong,.promise-card span{
+  color:#fff !important;
+  opacity:1 !important;
+}
+
+/* Sécurité générale : tout conteneur noir identifié inline */
+[style*="background:#0"],
+[style*="background: #0"],
+[style*="background:#1"],
+[style*="background: #1"],
+[style*="background:black"],
+[style*="background: black"]{
+  color:#fff !important;
+}
+[style*="background:#0"] *,
+[style*="background: #0"] *,
+[style*="background:#1"] *,
+[style*="background: #1"] *,
+[style*="background:black"] *,
+[style*="background: black"] *{
+  color:#fff !important;
+  opacity:1 !important;
+}
+
+/* Les labels FACE/DOS restent blancs */
+.hoodie-label,
+.hoodie-label *{
+  color:#fff !important;
+}
+
+
+/* =========================================================
+   MDR CRÉATION — V9.14
+   Correction définitive du contraste des blocs noirs
+   Les règles précédentes "texte noir sur section jaune"
+   avaient une spécificité CSS supérieure.
+   ========================================================= */
+
+/* Cartes 01 / 02 / 03 */
+body main section.section .steps .step,
+body main section.section .steps .step h1,
+body main section.section .steps .step h2,
+body main section.section .steps .step h3,
+body main section.section .steps .step h4,
+body main section.section .steps .step p,
+body main section.section .steps .step span,
+body main section.section .steps .step strong,
+body main section.section .steps .step .num{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+
+/* Cartes QR / NFC */
+body main section.section .qr-grid .qr-card,
+body main section.section .qr-grid .qr-card h1,
+body main section.section .qr-grid .qr-card h2,
+body main section.section .qr-grid .qr-card h3,
+body main section.section .qr-grid .qr-card h4,
+body main section.section .qr-grid .qr-card p,
+body main section.section .qr-grid .qr-card ul,
+body main section.section .qr-grid .qr-card li,
+body main section.section .qr-grid .qr-card span,
+body main section.section .qr-grid .qr-card strong{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+
+/* Toutes les autres boîtes sombres déjà présentes dans le site */
+body main section.section .tech-card *,
+body main section.section .info-card *,
+body main section.section .feature *,
+body main section.section .demo-text *,
+body main section.section .pro[style*="background"] *,
+body main section.section [class*="dark-card"] *,
+body main section.section [class*="black-card"] *{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+
+/* Numéros volontairement blancs également, conformément à la demande */
+body main section.section .steps .step .num{
+  color:#FFFFFF !important;
+}
+
+/* Les titres de section sur fond jaune restent noirs/roses :
+   seule la typographie située DANS les rectangles noirs devient blanche. */
+
+
+/* =========================================================
+   MDR CRÉATION — V9.15
+   Contraste complet : texte blanc dans tous les blocs noirs
+   ========================================================= */
+
+/* Cartes techniques DOS / FACE / MANCHE / FIXATION */
+body main .spec,
+body main .spec strong,
+body main .spec span{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+body main .spec small{
+  color:#D8AE56 !important;
+  opacity:1 !important;
+}
+
+/* Blocs 01 / 02 / 03 / 04 de fixation */
+body main .fix,
+body main .fix b,
+body main .fix strong,
+body main .fix span,
+body main .fix p{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+body main .fix b{
+  color:#D8AE56 !important;
+}
+
+/* Cartes Particuliers / Professionnels */
+body main .pro,
+body main .pro h1,
+body main .pro h2,
+body main .pro h3,
+body main .pro h4,
+body main .pro p,
+body main .pro span,
+body main .pro strong,
+body main .pro li{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+
+/* Cartes concept 01 / 02 / 03 */
+body main .step,
+body main .step h1,
+body main .step h2,
+body main .step h3,
+body main .step h4,
+body main .step p,
+body main .step span,
+body main .step strong{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+body main .step .num{
+  color:#FFFFFF !important;
+  opacity:.22 !important;
+}
+
+/* QR / NFC et autres cartes sombres */
+body main .qr-card,
+body main .qr-card *,
+body main .nfc-card,
+body main .nfc-card *,
+body main .promise-card,
+body main .promise-card *,
+body main .tech-card,
+body main .tech-card *,
+body main .info-card,
+body main .info-card *,
+body main .feature,
+body main .feature *{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+
+/* Conserver les accents volontaires */
+body main .eyebrow,
+body main .collection-kicker,
+body main .swipe-hint{
+  color:#D90073 !important;
+}
+
+
+/* =========================================================
+   MDR CRÉATION — V9.16 — Footer contact
+   ========================================================= */
+.mdr-footer{
+  background:#090909 !important;
+  color:#fff !important;
+  border-top:1px solid rgba(255,10,138,.45) !important;
+  padding:42px 20px calc(34px + env(safe-area-inset-bottom)) !important;
+}
+.mdr-footer-inner{
+  max-width:980px;
+  margin:0 auto;
+}
+.mdr-footer-kicker{
+  color:#FF0A8A !important;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.18em;
+  margin-bottom:8px;
+}
+.mdr-footer h2{
+  color:#fff !important;
+  margin:0 0 10px;
+  font-size:clamp(30px,8vw,54px);
+  line-height:.95;
+}
+.mdr-footer p{
+  color:#D8D3D6 !important;
+}
+.mdr-contact-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:26px 0 22px;
+}
+.mdr-contact-item{
+  background:#151214;
+  border:1px solid rgba(255,10,138,.32);
+  border-radius:18px;
+  padding:16px;
+  min-width:0;
+}
+.mdr-contact-label{
+  display:block;
+  color:#FF0A8A !important;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  margin-bottom:7px;
+}
+.mdr-contact-item strong,
+.mdr-contact-item a{
+  color:#fff !important;
+  text-decoration:none;
+  font-size:15px;
+  line-height:1.35;
+  word-break:break-word;
+}
+.mdr-contact-cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  border-radius:16px;
+  background:#FF0A8A;
+  color:#fff !important;
+  text-decoration:none;
+  font-weight:900;
+  letter-spacing:.12em;
+  border:1px solid #FF0A8A;
+}
+.mdr-footer-note{
+  margin:18px 0 0;
+  font-size:12px;
+  color:#AFA8AC !important;
+  text-align:center;
+}
+@media(max-width:560px){
+  .mdr-contact-grid{grid-template-columns:1fr}
+  .mdr-footer{padding-left:16px !important;padding-right:16px !important}
+}
+
+</style>
+</head>
+<body>
+<main id="top">
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo-wrap">
+      <img class="hero-logo" src="images/image-01-5c6ac4db2cec096c.jpg" alt="MDR Création">
+      <div class="hero-signature">ART • STYLE • PASSION</div>
+    </div>
+    <div class="hero-main-copy">
+      <div class="eyebrow">MDR CRÉATION</div>
+      <h1>UN SWEAT.<br><span class="gold">DES UNIVERS</span><br>À L’INFINI.</h1>
+      <p class="hero-copy">Tu gardes la base. Tu changes ton style. Une identité modulaire construite autour d’éléments textiles interchangeables.</p>
+      <div class="cta-row"><a class="btn primary" href="#concept">Découvrir le concept</a><a class="btn" href="#collection">Voir les visuels</a></div>
+    </div>
+    <div class="hero-product hero-product-clean">
+      <div class="hoodie-card"><img src="images/image-02-63cd550a9e380111.webp" alt="Face sweat MDR Création"><div class="hoodie-label">FACE • IDENTITÉ MDR</div></div>
+      <div class="hoodie-card"><img src="images/image-03-441ec9b897d99aa0.webp" alt="Dos sweat MDR Création"><div class="hoodie-label">DOS • 35 × 45</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="concept">
+ <div class="container">
+  <div class="section-head"><div><div class="eyebrow">Le principe</div><h2>3 gestes.<br><span class="gold">Un nouveau look.</span></h2></div><p class="section-intro">La page doit faire comprendre le concept avant même d’entrer dans la technique.</p></div>
+  <div class="steps">
+   <div class="step"><div class="num">01</div><h3>GARDE TON SWEAT</h3><p>Une base noire qui reste. L’identité MDR est immédiatement reconnaissable.</p></div>
+   <div class="step"><div class="num">02</div><h3>RETIRE LE DOS</h3><p>Le panneau textile arrière est indépendant du vêtement et pensé pour être remplacé.</p></div>
+   <div class="step"><div class="num">03</div><h3>CHANGE D’UNIVERS</h3><p>Un autre visuel 35 × 45 cm, et le même sweat prend une identité totalement différente.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="sweat">
+ <div class="container">
+  <div class="demo">
+   <div class="demo-visual"><img src="images/image-03-441ec9b897d99aa0.webp" alt="Sweat MDR Création dos interchangeable"></div>
+   <div>
+    <div class="eyebrow">Le produit</div>
+    <h2>LE DOS DEVIENT<br><span class="gold">UNE TOILE.</span></h2>
+    <p>Le panneau arrière est le cœur visuel du concept. Le format actuellement retenu est <strong style="color:white">35 × 45 cm</strong>. Le système associe une zone auto-agrippante et des pressions périphériques.</p>
+    <div class="specs">
+      <div class="spec"><small>Dos</small><strong>35 × 45 cm</strong></div>
+      <div class="spec"><small>Face</small><strong>Logo circulaire interchangeable</strong></div>
+      <div class="spec"><small>Manche</small><strong>Écusson interchangeable</strong></div>
+      <div class="spec"><small>Fixation</small><strong>Auto-agrippant + pressions</strong></div>
+    </div>
+   </div>
+  </div>
+  <div class="fixation">
+    <div class="fix"><b>01 • BASE</b><span>Le sweat reste le support permanent.</span></div>
+    <div class="fix"><b>02 • AUTO-AGRIPPANT</b><span>Maintien réparti sur la surface du panneau.</span></div>
+    <div class="fix"><b>03 • BORDURE</b><span>Finition noire renforcée autour du module imprimé.</span></div>
+    <div class="fix"><b>04 • PRESSIONS</b><span>Verrouillage périphérique du panneau interchangeable.</span></div>
+  </div>
+ </div>
+</section>
+
+
+<section class="section worn-section" id="porte">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Le sweat porté</div>
+        <h2>UNE IDENTITÉ.<br><span class="gold">SOUS 3 ANGLES.</span></h2>
+      </div>
+      <p class="section-intro">Face, profil et dos : trois vues cohérentes du même univers MDR CRÉATION, pour mieux comprendre les proportions et le rendu porté.</p>
+    </div>
+
+    <div class="worn-grid">
+      <figure class="worn-card worn-main">
+        <a class="worn-open" href="#wornFull0" aria-label="Ouvrir MDR Création — vue de face portée en plein écran"><img src="images/image-04-5c3091c7649b9bf9.webp" alt="MDR Création — vue de face portée"></a>
+        <figcaption><span>01</span><strong>FACE</strong><small>Logo MDR • manche QR</small></figcaption>
+      </figure>
+
+      <figure class="worn-card">
+        <a class="worn-open" href="#wornFull1" aria-label="Ouvrir MDR Création — vue de profil portée en plein écran"><img src="images/image-05-d5cc24cad33d74a0.webp" alt="MDR Création — vue de profil portée"></a>
+        <figcaption><span>02</span><strong>PROFIL</strong><small>Volume • placement • silhouette</small></figcaption>
+      </figure>
+
+      <figure class="worn-card">
+        <a class="worn-open" href="#wornFull2" aria-label="Ouvrir MDR Création — vue de dos portée en plein écran"><img src="images/image-06-04fbd2c09a5a6506.webp" alt="MDR Création — vue de dos portée"></a>
+        <figcaption><span>03</span><strong>DOS</strong><small>Panneau interchangeable</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="collection">
+ <div class="container">
+  <div class="section-head"><div><div class="eyebrow">Collection</div><h2>CHOISIS TON<br><span class="gold">UNIVERS.</span></h2></div><p class="section-intro">Clique sur n’importe quelle image : elle s’ouvre en plein écran. Sur iPhone, tu peux aussi glisser vers la suivante ou la précédente.</p></div>
+  <div class="gallery art-horizontal"><a class="art-card" data-index="0" href="#artFull0" aria-label="Ouvrir SKULL en plein écran">
+      <div class="art-wrap"><img src="images/image-07-6ce1aab06520878e.jpg" alt="SKULL"></div>
+      <div class="art-meta"><div><small>URBAN</small><strong>SKULL</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="1" href="#artFull1" aria-label="Ouvrir ASTRONAUT en plein écran">
+      <div class="art-wrap"><img src="images/image-08-422eb27b4939f3cc.jpg" alt="ASTRONAUT"></div>
+      <div class="art-meta"><div><small>SPACE</small><strong>ASTRONAUT</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="2" href="#artFull2" aria-label="Ouvrir BULLDOG en plein écran">
+      <div class="art-wrap"><img src="images/image-09-65d4f27bfaa435fb.jpg" alt="BULLDOG"></div>
+      <div class="art-meta"><div><small>ANIMALS</small><strong>BULLDOG</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="3" href="#artFull3" aria-label="Ouvrir ELEPHANT en plein écran">
+      <div class="art-wrap"><img src="images/image-10-d204cdf29534923b.jpg" alt="ELEPHANT"></div>
+      <div class="art-meta"><div><small>ANIMALS</small><strong>ELEPHANT</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="4" href="#artFull4" aria-label="Ouvrir HEADPHONES en plein écran">
+      <div class="art-wrap"><img src="images/image-11-1b8c01659457cd08.jpg" alt="HEADPHONES"></div>
+      <div class="art-meta"><div><small>MUSIC</small><strong>HEADPHONES</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="5" href="#artFull5" aria-label="Ouvrir POP GLASSES en plein écran">
+      <div class="art-wrap"><img src="images/image-12-ed447447f66e1be2.jpg" alt="POP GLASSES"></div>
+      <div class="art-meta"><div><small>POP</small><strong>POP GLASSES</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="6" href="#artFull6" aria-label="Ouvrir LOLLIPOP en plein écran">
+      <div class="art-wrap"><img src="images/image-13-108e50adf4395e6b.jpg" alt="LOLLIPOP"></div>
+      <div class="art-meta"><div><small>POP</small><strong>LOLLIPOP</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="7" href="#artFull7" aria-label="Ouvrir TEDDY PUNK en plein écran">
+      <div class="art-wrap"><img src="images/image-14-f5d3802683a38bd0.jpg" alt="TEDDY PUNK"></div>
+      <div class="art-meta"><div><small>URBAN</small><strong>TEDDY PUNK</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="8" href="#artFull8" aria-label="Ouvrir PEACE &amp; LOVE en plein écran">
+      <div class="art-wrap"><img src="images/image-15-9b8341994ab43ea2.jpg" alt="PEACE &amp; LOVE"></div>
+      <div class="art-meta"><div><small>LOVE</small><strong>PEACE &amp; LOVE</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="9" href="#artFull9" aria-label="Ouvrir EINSTEIN en plein écran">
+      <div class="art-wrap"><img src="images/image-16-5e23824a9d7a6722.jpg" alt="EINSTEIN"></div>
+      <div class="art-meta"><div><small>ART</small><strong>EINSTEIN</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="10" href="#artFull10" aria-label="Ouvrir MONKEY COOL en plein écran">
+      <div class="art-wrap"><img src="images/image-17-3004b42f514c111c.jpg" alt="MONKEY COOL"></div>
+      <div class="art-meta"><div><small>URBAN</small><strong>MONKEY COOL</strong></div><span>35×45</span></div>
+    </a>
+<a class="art-card" data-index="11" href="#artFull11" aria-label="Ouvrir COLOR ART en plein écran">
+      <div class="art-wrap"><img src="images/image-18-87a3eabe5c1d9a2d.webp" alt="COLOR ART"></div>
+      <div class="art-meta"><div><small>COLOR</small><strong>COLOR ART</strong></div><span>35×45</span></div>
+    </a></div><div class="collection-row-head"><div><span class="collection-kicker">NOUVEAUX UNIVERS</span><h3>Street, pop & couleurs</h3></div><span class="swipe-hint">← GLISSE POUR EXPLORER →</span></div><div class="gallery art-horizontal new-art-row"><a class="art-card new-art-card" href="#artFull12" aria-label="Voir Teddy graffiti multicolore en grand"><div class="art-wrap"><img src="images/image-19-caea7153993e1db7.webp" alt="Teddy graffiti multicolore"></div><div class="art-info"><div class="art-name">Teddy graffiti multicolore</div><div class="art-cat">ANIMAUX & POP</div></div></a><a class="art-card new-art-card" href="#artFull13" aria-label="Voir Teddy néon streetwear en grand"><div class="art-wrap"><img src="images/image-20-21227650d824062f.webp" alt="Teddy néon streetwear"></div><div class="art-info"><div class="art-name">Teddy néon streetwear</div><div class="art-cat">ANIMAUX & POP</div></div></a><a class="art-card new-art-card" href="#artFull14" aria-label="Voir Sneakers street art en grand"><div class="art-wrap"><img src="images/image-21-af4451f76f760341.webp" alt="Sneakers street art"></div><div class="art-info"><div class="art-name">Sneakers street art</div><div class="art-cat">STREET & SNEAKERS</div></div></a><a class="art-card new-art-card" href="#artFull15" aria-label="Voir Sneaker psychédélique en grand"><div class="art-wrap"><img src="images/image-22-daff63837b4faece.webp" alt="Sneaker psychédélique"></div><div class="art-info"><div class="art-name">Sneaker psychédélique</div><div class="art-cat">STREET & SNEAKERS</div></div></a><a class="art-card new-art-card" href="#artFull16" aria-label="Voir Love You graffiti en grand"><div class="art-wrap"><img src="images/image-23-4e5bfa8cf283d85a.webp" alt="Love You graffiti"></div><div class="art-info"><div class="art-name">Love You graffiti</div><div class="art-cat">STREET & MESSAGES</div></div></a><a class="art-card new-art-card" href="#artFull17" aria-label="Voir Chat graffiti en grand"><div class="art-wrap"><img src="images/image-24-28477b7d88bfdffa.webp" alt="Chat graffiti"></div><div class="art-info"><div class="art-name">Chat graffiti</div><div class="art-cat">ANIMAUX & POP</div></div></a><a class="art-card new-art-card" href="#artFull18" aria-label="Voir Canard rap streetwear en grand"><div class="art-wrap"><img src="images/image-25-bc57d56a5efbe6a2.webp" alt="Canard rap streetwear"></div><div class="art-info"><div class="art-name">Canard rap streetwear</div><div class="art-cat">STREET & PERSONNAGES</div></div></a><a class="art-card new-art-card" href="#artFull19" aria-label="Voir Singe casque multicolore en grand"><div class="art-wrap"><img src="images/image-26-f4d2eac772072bf3.webp" alt="Singe casque multicolore"></div><div class="art-info"><div class="art-name">Singe casque multicolore</div><div class="art-cat">ANIMAUX & POP</div></div></a></div>
+
+  <div class="bb-followup" aria-label="Visuels complémentaires BRUT&BULL">
+    <div class="bb-grid">
+          <figure class="bb-card">
+            <a href="#bbFull0" class="bb-open" aria-label="Ouvrir BRUT&BULL image 1 en plein écran">
+              <img src="images/image-27-ab4918e39f58eba1.jpg" alt="BRUT&BULL — hôtel">
+            </a>
+          </figure>
+    
+          <figure class="bb-card">
+            <a href="#bbFull1" class="bb-open" aria-label="Ouvrir BRUT&BULL image 2 en plein écran">
+              <img src="images/image-28-4c6d5ce95f92f720.jpg" alt="BRUT&BULL — fauteuil">
+            </a>
+          </figure>
+    
+          <figure class="bb-card">
+            <a href="#bbFull2" class="bb-open" aria-label="Ouvrir BRUT&BULL image 3 en plein écran">
+              <img src="images/image-29-d3aa59fdbf7b9a4c.webp" alt="BRUT&BULL — entrée de nuit">
+            </a>
+          </figure>
+    
+          <figure class="bb-card">
+            <a href="#bbFull3" class="bb-open" aria-label="Ouvrir BRUT&BULL image 4 en plein écran">
+              <img src="images/image-30-2c76146a39ac54ec.webp" alt="BRUT&BULL — atelier">
+            </a>
+          </figure>
+        </div>
+  </div>
+ </div>
+</section>
+
+
+
+<section class="section">
+ <div class="container">
+  <div class="section-head"><div><div class="eyebrow">QR / NFC</div><h2>TON SWEAT<br><span class="gold">CONTINUE EN LIGNE.</span></h2></div></div>
+  <div class="qr-grid">
+    <div class="qr-card"><h3>Depuis la manche</h3><p>Le QR ou le NFC peut devenir un point d’entrée vers l’univers MDR CRÉATION.</p><ul><li>Découvrir les modèles</li><li>Voir les prix</li><li>Accéder à la personnalisation</li><li>Commander ou contacter MDR CRÉATION</li></ul></div>
+    <div class="qr-card"><h3>Sans fausse promesse</h3><p>V9 ne présente pas de certificat numérique, de domaine précis ou de fonction non encore mise en service. Le site montre seulement les usages réellement envisagés.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="personnalisation">
+ <div class="container">
+  <div class="section-head"><div><div class="eyebrow">Custom</div><h2>CRÉE TON<br><span class="gold">PROPRE DOS.</span></h2></div></div>
+  <div class="pro-grid">
+   <div class="pro"><h3>PARTICULIERS</h3><p>Une image personnelle, un univers, une idée : le principe modulaire permet d’envisager une création dédiée.</p><button class="btn">Personnalisation</button></div>
+   <div class="pro"><h3>PROFESSIONNELS</h3><p>Entreprises, restaurants, clubs, associations, artistes ou événements peuvent utiliser le panneau comme support d’identité visuelle.</p><button class="btn primary">Projet professionnel</button></div>
+  </div>
+ </div>
+</section>
+</main>
+
+
+<footer class="mdr-footer">
+  <div class="mdr-footer-inner">
+    <div class="mdr-footer-brand">
+      <div class="mdr-footer-kicker">MDR CRÉATION</div>
+      <h2>RESTONS EN CONTACT.</h2>
+      <p>Projet textile modulaire & univers interchangeables.</p>
+    </div>
+
+    <div class="mdr-contact-grid">
+      <div class="mdr-contact-item">
+        <span class="mdr-contact-label">NOM</span>
+        <strong>Dos Reis</strong>
+      </div>
+      <div class="mdr-contact-item">
+        <span class="mdr-contact-label">EMAIL</span>
+        <a href="mailto:manudosreis94@gmail.com">manudosreis94@gmail.com</a>
+      </div>
+      <div class="mdr-contact-item">
+        <span class="mdr-contact-label">TÉLÉPHONE</span>
+        <a href="tel:+33625486132">06 25 48 61 32</a>
+      </div>
+      <div class="mdr-contact-item">
+        <span class="mdr-contact-label">VILLE</span>
+        <strong>Champigny-sur-Marne</strong>
+      </div>
+    </div>
+
+    <a class="mdr-contact-cta" href="mailto:manudosreis94@gmail.com">NOUS CONTACTER</a>
+
+    <p class="mdr-footer-note">Coordonnées susceptibles d’évoluer.</p>
+  </div>
+</footer>
+
+
+
+<div class="art-target" id="artFull12"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-19-caea7153993e1db7.webp" alt="Teddy graffiti multicolore — plein écran"></div><div class="art-target" id="artFull13"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-20-21227650d824062f.webp" alt="Teddy néon streetwear — plein écran"></div><div class="art-target" id="artFull14"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-21-af4451f76f760341.webp" alt="Sneakers street art — plein écran"></div><div class="art-target" id="artFull15"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-22-daff63837b4faece.webp" alt="Sneaker psychédélique — plein écran"></div><div class="art-target" id="artFull16"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-23-4e5bfa8cf283d85a.webp" alt="Love You graffiti — plein écran"></div><div class="art-target" id="artFull17"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-24-28477b7d88bfdffa.webp" alt="Chat graffiti — plein écran"></div><div class="art-target" id="artFull18"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-25-bc57d56a5efbe6a2.webp" alt="Canard rap streetwear — plein écran"></div><div class="art-target" id="artFull19"><a class="fs-close" href="#collection" aria-label="Fermer">×</a><a class="fs-bg" href="#collection" aria-label="Fermer"></a><img src="images/image-26-f4d2eac772072bf3.webp" alt="Singe casque multicolore — plein écran"></div><div class="art-target" id="artFull0">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull11" aria-label="Image précédente">‹</a>
+  <img src="images/image-07-6ce1aab06520878e.jpg" alt="SKULL — plein écran">
+  <a class="fs-nav fs-next" href="#artFull1" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull1">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull0" aria-label="Image précédente">‹</a>
+  <img src="images/image-08-422eb27b4939f3cc.jpg" alt="ASTRONAUT — plein écran">
+  <a class="fs-nav fs-next" href="#artFull2" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull2">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull1" aria-label="Image précédente">‹</a>
+  <img src="images/image-09-65d4f27bfaa435fb.jpg" alt="BULLDOG — plein écran">
+  <a class="fs-nav fs-next" href="#artFull3" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull3">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull2" aria-label="Image précédente">‹</a>
+  <img src="images/image-10-d204cdf29534923b.jpg" alt="ELEPHANT — plein écran">
+  <a class="fs-nav fs-next" href="#artFull4" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull4">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull3" aria-label="Image précédente">‹</a>
+  <img src="images/image-11-1b8c01659457cd08.jpg" alt="HEADPHONES — plein écran">
+  <a class="fs-nav fs-next" href="#artFull5" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull5">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull4" aria-label="Image précédente">‹</a>
+  <img src="images/image-12-ed447447f66e1be2.jpg" alt="POP GLASSES — plein écran">
+  <a class="fs-nav fs-next" href="#artFull6" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull6">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull5" aria-label="Image précédente">‹</a>
+  <img src="images/image-13-108e50adf4395e6b.jpg" alt="LOLLIPOP — plein écran">
+  <a class="fs-nav fs-next" href="#artFull7" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull7">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull6" aria-label="Image précédente">‹</a>
+  <img src="images/image-14-f5d3802683a38bd0.jpg" alt="TEDDY PUNK — plein écran">
+  <a class="fs-nav fs-next" href="#artFull8" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull8">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull7" aria-label="Image précédente">‹</a>
+  <img src="images/image-15-9b8341994ab43ea2.jpg" alt="PEACE &amp; LOVE — plein écran">
+  <a class="fs-nav fs-next" href="#artFull9" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull9">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull8" aria-label="Image précédente">‹</a>
+  <img src="images/image-16-5e23824a9d7a6722.jpg" alt="EINSTEIN — plein écran">
+  <a class="fs-nav fs-next" href="#artFull10" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull10">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull9" aria-label="Image précédente">‹</a>
+  <img src="images/image-17-3004b42f514c111c.jpg" alt="MONKEY COOL — plein écran">
+  <a class="fs-nav fs-next" href="#artFull11" aria-label="Image suivante">›</a>
+</div>
+
+<div class="art-target" id="artFull11">
+  <a class="fs-close" href="#collection" aria-label="Fermer">×</a>
+  <a class="fs-bg" href="#collection" aria-label="Fermer"></a>
+  <a class="fs-nav fs-prev" href="#artFull10" aria-label="Image précédente">‹</a>
+  <img src="images/image-18-87a3eabe5c1d9a2d.webp" alt="COLOR ART — plein écran">
+  <a class="fs-nav fs-next" href="#artFull0" aria-label="Image suivante">›</a>
+</div>
+
+
+
+
+
+<div class="worn-target" id="wornFull0">
+  <a class="worn-target-close" href="#porte" aria-label="Fermer">×</a>
+  <a class="worn-target-bg" href="#porte" aria-label="Fermer"></a>
+  <img src="images/image-04-5c3091c7649b9bf9.webp" alt="Vue MDR Création plein écran">
+</div>
+<div class="worn-target" id="wornFull1">
+  <a class="worn-target-close" href="#porte" aria-label="Fermer">×</a>
+  <a class="worn-target-bg" href="#porte" aria-label="Fermer"></a>
+  <img src="images/image-05-d5cc24cad33d74a0.webp" alt="Vue MDR Création plein écran">
+</div>
+<div class="worn-target" id="wornFull2">
+  <a class="worn-target-close" href="#porte" aria-label="Fermer">×</a>
+  <a class="worn-target-bg" href="#porte" aria-label="Fermer"></a>
+  <img src="images/image-06-04fbd2c09a5a6506.webp" alt="Vue MDR Création plein écran">
+</div>
+<div class="bb-target" id="bbFull0">
+  <a class="bb-target-close" href="#brutbull-visuels" aria-label="Fermer">×</a>
+  <a class="bb-target-bg" href="#brutbull-visuels" aria-label="Fermer"></a>
+  <img src="images/image-27-ab4918e39f58eba1.jpg" alt="BRUT&BULL — image 1 plein écran">
+</div>
+<div class="bb-target" id="bbFull1">
+  <a class="bb-target-close" href="#brutbull-visuels" aria-label="Fermer">×</a>
+  <a class="bb-target-bg" href="#brutbull-visuels" aria-label="Fermer"></a>
+  <img src="images/image-28-4c6d5ce95f92f720.jpg" alt="BRUT&BULL — image 2 plein écran">
+</div>
+<div class="bb-target" id="bbFull2">
+  <a class="bb-target-close" href="#brutbull-visuels" aria-label="Fermer">×</a>
+  <a class="bb-target-bg" href="#brutbull-visuels" aria-label="Fermer"></a>
+  <img src="images/image-29-d3aa59fdbf7b9a4c.webp" alt="BRUT&BULL — image 3 plein écran">
+</div>
+<div class="bb-target" id="bbFull3">
+  <a class="bb-target-close" href="#brutbull-visuels" aria-label="Fermer">×</a>
+  <a class="bb-target-bg" href="#brutbull-visuels" aria-label="Fermer"></a>
+  <img src="images/image-30-2c76146a39ac54ec.webp" alt="BRUT&BULL — image 4 plein écran">
+</div>
+</body>
+</html>
